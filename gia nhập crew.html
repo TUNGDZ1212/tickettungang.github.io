@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Application to join TunGang</title>
+  <style>
+     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#0f0f16;
+      margin:0;
+      padding:24px;
+      color:#eee;
+    }
+
+    .container{
+      max-width:650px;
+      margin:0 auto;
+      background:#1a1a27;
+      padding:32px;
+      border-radius:20px;
+      box-shadow:0 8px 40px rgba(0,0,0,0.4);
+      border:1px solid #2c2c3a;
+      animation:fadeIn .5s ease;
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0; transform:translateY(20px);} 
+      to{opacity:1; transform:translateY(0);} 
+    }
+
+    h2{
+      text-align:center;
+      margin-top:0;
+      font-size:28px;
+      color:#7ab8ff;
+      text-shadow:0 0 12px #005eff;
+      letter-spacing:1px;
+    }
+
+    label{
+      font-weight:600;
+      margin-top:16px;
+      display:block;
+      color:#9bb3d1;
+      font-size:15px;
+    }
+
+    input,textarea,select{
+      width:100%;
+      padding:12px;
+      margin-top:6px;
+      border:1px solid #2f3a4d;
+      border-radius:12px;
+      font-size:15px;
+      background:#111522;
+      color:#e5e9f5;
+      transition:0.2s;
+    }
+
+    input:focus,textarea:focus,select:focus{
+      border-color:#4d9cff;
+      box-shadow:0 0 10px #4d9cff88;
+      outline:none;
+    }
+
+    button{
+      margin-top:28px;
+      width:100%;
+      padding:14px;
+      font-size:18px;
+      font-weight:600;
+      background:linear-gradient(135deg,#3b82f6,#2563eb);
+      color:#fff;
+      border:none;
+      border-radius:14px;
+      cursor:pointer;
+      box-shadow:0 4px 22px rgba(37,99,235,0.45);
+      transition:0.28s;
+    }
+
+    button:hover{
+      transform:translateY(-3px);
+      box-shadow:0 6px 30px rgba(37,99,235,0.7);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>APPLICATION TO JOIN TUNGANG</h2>
+    <form>
+      <label>Username Roblox</label>
+      <input type="text" placeholder="example : @shopclone_9Q6T03" required />
+
+      <label>Username Discord</label>
+      <input type="text" placeholder="example : @takashinguyendz" required />
+
+      <label>Bounty</label>
+      <input type="text" placeholder="example: 2.5M bounty " />
+
+      <label>playing experience</label>
+      <textarea rows="3" placeholder="Describe your experience…"></textarea>
+
+      <label>Reasons for wanting to join TUNGANG</label>
+      <textarea rows="3" placeholder="Please tell us why you want to join TUNGANG…" required></textarea>
+
+      <label>Time online per day</label>
+      <input type="text" placeholder="Example: 2–4 hours/day" />
+
+      <button n>G?i don</button>
+      <script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const inputs = form.querySelectorAll('input, textarea, select');
+      const data = {};
+      inputs.forEach(i => data[i.previousElementSibling?.innerText] = i.value);
+
+      const webhook = "https://discord.com/api/webhooks/1442493251612315875/NvSYZw6X8olVnyelRQ5hNh9JBh86fZOsFN23XfKht_LxJdnDRo7DBFK8PgqoE7fzCS7v";
+
+      const payload = {
+        content: "?? **Ticket Join TUNGANG**",
+        embeds: [
+          {
+            title: "",
+            color: 5793266,
+            fields: Object.keys(data).map(k => ({ name: k, value: data[k] || "Không có", inline: false })),
+            timestamp: new Date().toISOString()
+          }
+        ]
+      };
+
+      await fetch(webhook, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      alert("Done!");
+    });
+  </script>
+</form>
+  </div>
+</body>
+</html>
